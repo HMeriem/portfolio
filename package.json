@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "install:all": "cd frontend && npm ci && cd ../backend && npm ci && cd ../e2e && npm ci",
+    "lint": "npm run lint --workspace=frontend && npm run lint --workspace=backend",
+    "format": "npm run format --workspace=frontend && npm run format --workspace=backend",
+    "test": "npm run test:run --workspace=frontend && npm run test:cov --workspace=backend"
+  },
+  "devDependencies": {
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.9"
+  },
+  "lint-staged": {
+    "frontend/src/**/*.{ts,tsx}": [
+      "bash -c 'cd frontend && npx eslint --fix ${STAGED_FILES}'",
+      "bash -c 'cd frontend && npx prettier --write ${STAGED_FILES}'"
+    ],
+    "backend/src/**/*.ts": [
+      "bash -c 'cd backend && npx eslint --fix ${STAGED_FILES}'",
+      "bash -c 'cd backend && npx prettier --write ${STAGED_FILES}'"
+    ]
+  }
+}

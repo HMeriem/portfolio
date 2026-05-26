@@ -1,0 +1,32 @@
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# Dépendances
+node_modules/
+
+# Build
+dist/
+build/
+
+# Tests
+coverage/
+playwright-report/
+test-results/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db

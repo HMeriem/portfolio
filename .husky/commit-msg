@@ -1,0 +1,22 @@
+#!/bin/sh
+# Vérifie que le message de commit respecte la convention Conventional Commits
+# Format attendu : type(scope): description
+# Exemples : feat: add login page | fix(auth): handle token expiry | chore: update deps
+
+COMMIT_MSG=$(cat "$1")
+PATTERN="^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)(\(.+\))?: .{1,100}$"
+
+if ! echo "$COMMIT_MSG" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "❌  Message de commit invalide."
+  echo ""
+  echo "    Format attendu : type(scope): description"
+  echo "    Types valides  : feat | fix | docs | style | refactor | perf | test | chore | ci | build | revert"
+  echo ""
+  echo "    Exemples :"
+  echo "      feat: add user authentication"
+  echo "      fix(api): handle empty response"
+  echo "      chore: update dependencies"
+  echo ""
+  exit 1
+fi
