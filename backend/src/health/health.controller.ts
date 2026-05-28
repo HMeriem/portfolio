@@ -1,9 +1,9 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get } from '@nestjs/common';
 
 interface HealthResponse {
-  status: string
-  timestamp: string
-  uptime: number
+  status: string;
+  timestamp: string;
+  uptime: number;
 }
 
 @Controller('health')
@@ -14,6 +14,6 @@ export class HealthController {
       status: 'ok',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
-    }
+    };
   }
 }
