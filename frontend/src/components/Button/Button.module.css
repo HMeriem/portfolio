@@ -8,7 +8,9 @@
   font-weight: 500;
   cursor: pointer;
   border: none;
-  transition: background 0.15s, opacity 0.15s;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
 }
 
 .primary {
