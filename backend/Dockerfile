@@ -20,7 +20,7 @@ RUN npm run build
 FROM deps-dev AS dev
 COPY . .
 EXPOSE 4000
-CMD ["npm", "run", "start:dev"]
+CMD ["sh", "-c", "npm run build && npm run start:dev"]
 
 # ─── Production (image allégée) ───────────────────────────────
 FROM node:20-alpine AS prod
