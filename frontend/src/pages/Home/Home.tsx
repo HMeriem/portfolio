@@ -2,6 +2,7 @@ import styles from './home.module.css';
 import Header from '../sections/Header/Header';
 import Profile from '../sections/Profile/Profile';
 import Skills from '../sections/Skills/Skills';
+import Career from '../sections/Career/Career';
 import ScrollHint from '@/components/ScrollHint/ScrollHint';
 
 export default function Home() {
@@ -15,6 +16,10 @@ export default function Home() {
         </section>
         <section id="skills" className={styles.home__content__section}>
           <Skills />
+          <ScrollHint />
+        </section>
+        <section id="career" className={styles.home__content__section}>
+          <Career />
           <ScrollHint />
         </section>
       </main>

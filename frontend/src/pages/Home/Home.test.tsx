@@ -26,6 +26,12 @@ describe('Home — integration', () => {
       expect(skillsSection).toBeInTheDocument();
     });
 
+    it('renders the career section', () => {
+      render(<Home />);
+      const careerSection = document.getElementById('career');
+      expect(careerSection).toBeInTheDocument();
+    });
+
     it('renders scroll hints in each section', () => {
       const { container } = render(<Home />);
       const hints = container.querySelectorAll('[aria-hidden="true"]');
@@ -48,6 +54,20 @@ describe('Home — integration', () => {
       render(<Home />);
       const link = screen.getByRole('link', { name: 'Parcours' });
       expect(link).toHaveAttribute('href', '#career');
+    });
+
+    describe('career section content', () => {
+      it('displays the section title', () => {
+        render(<Home />);
+        const careerSection = document.getElementById('career')!;
+        expect(within(careerSection).getByText('Parcours')).toBeInTheDocument();
+      });
+
+      it('displays all experience cards', () => {
+        render(<Home />);
+        const careerSection = document.getElementById('career')!;
+        expect(within(careerSection).getAllByRole('article')).toHaveLength(4);
+      });
     });
 
     it('the contact nav link points to the contact section', () => {
