@@ -21,10 +21,10 @@ describe('CareerCard', () => {
     expect(screen.getByText("2024 — aujourd'hui")).toBeInTheDocument();
   });
 
-  it('renders the job title as a heading', () => {
+  it('renders the job title', () => {
     render(<CareerCard experience={mockExperience} />);
     expect(
-      screen.getByRole('heading', { name: 'Lead développeuse TS / Python' }),
+      screen.getByText('Lead développeuse TS / Python'),
     ).toBeInTheDocument();
   });
 

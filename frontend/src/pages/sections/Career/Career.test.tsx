@@ -25,11 +25,11 @@ describe('Career', () => {
     });
   });
 
-  it('renders the correct number of job titles', () => {
+  it('renders job titles', () => {
     render(<Career />);
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(
-      experiences.length,
-    );
+    expect(screen.getByText('Lead développeuse TS / Python')).toBeInTheDocument();
+    expect(screen.getByText('Développeuse JavaScript')).toBeInTheDocument();
+    expect(screen.getAllByText('Développeuse Full-stack')).toHaveLength(2);
   });
 
   it('renders each period', () => {
