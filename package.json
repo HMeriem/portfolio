@@ -14,13 +14,11 @@
     "lint-staged": "^15.2.9"
   },
   "lint-staged": {
-    "frontend/src/**/*.{ts,tsx}": [
-      "bash -c 'cd frontend && npx eslint --fix ${STAGED_FILES}'",
-      "bash -c 'cd frontend && npx prettier --write ${STAGED_FILES}'"
+    "frontend/src/**/*.{ts,tsx,css}": [
+      "prettier --write"
     ],
     "backend/src/**/*.ts": [
-      "bash -c 'cd backend && npx eslint --fix ${STAGED_FILES}'",
-      "bash -c 'cd backend && npx prettier --write ${STAGED_FILES}'"
+      "prettier --write"
     ]
   }
 }
