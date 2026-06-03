@@ -27,7 +27,9 @@ describe('Career', () => {
 
   it('renders job titles', () => {
     render(<Career />);
-    expect(screen.getByText('Lead développeuse TS / Python')).toBeInTheDocument();
+    expect(
+      screen.getByText('Lead développeuse TS / Python'),
+    ).toBeInTheDocument();
     expect(screen.getByText('Développeuse JavaScript')).toBeInTheDocument();
     expect(screen.getAllByText('Développeuse Full-stack')).toHaveLength(2);
   });
