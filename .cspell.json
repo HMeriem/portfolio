@@ -1,0 +1,27 @@
+{
+  "words": [
+    "disponibility",
+    "firstname",
+    "lastname",
+    "Meriem",
+    "Hammouya",
+    "Passionnée",
+    "soignées",
+    "robustes",
+    "livrer",
+    "équipe",
+    "agile",
+    "détail",
+    "contacter",
+    "projets",
+    "Marseille",
+    "pleinement",
+    "MIASHS",
+    "DCISS"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "*.lock"
+  ]
+}
