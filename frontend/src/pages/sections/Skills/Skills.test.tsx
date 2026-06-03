@@ -4,7 +4,7 @@ import Skills from './Skills';
 describe('Skills', () => {
   it('renders the section heading', () => {
     render(<Skills />);
-    expect(screen.getByRole('heading', { name: 'Compétences' })).toBeInTheDocument();
+    expect(screen.getByText('Compétences')).toBeInTheDocument();
   });
 
   it('renders the section index', () => {

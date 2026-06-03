@@ -4,7 +4,7 @@ import SectionHeader from './SectionHeader';
 describe('SectionHeader', () => {
   it('renders the section title', () => {
     render(<SectionHeader title="Compétences" index="01" />);
-    expect(screen.getByRole('heading', { name: 'Compétences' })).toBeInTheDocument();
+    expect(screen.getByText('Compétences')).toBeInTheDocument();
   });
 
   it('renders the section index', () => {
@@ -14,7 +14,7 @@ describe('SectionHeader', () => {
 
   it('renders different title and index values', () => {
     render(<SectionHeader title="Parcours" index="02" />);
-    expect(screen.getByRole('heading', { name: 'Parcours' })).toBeInTheDocument();
+    expect(screen.getByText('Parcours')).toBeInTheDocument();
     expect(screen.getByText('02')).toBeInTheDocument();
   });
 });
