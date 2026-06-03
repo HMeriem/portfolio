@@ -10,7 +10,9 @@ const mockSkills = [
 describe('SkillCategory', () => {
   it('renders the category title', () => {
     render(<SkillCategory title="Langages" skills={mockSkills} />);
-    expect(screen.getByRole('heading', { name: 'Langages' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Langages' }),
+    ).toBeInTheDocument();
   });
 
   it('renders all skill names', () => {
@@ -26,7 +28,9 @@ describe('SkillCategory', () => {
   });
 
   it('renders SkillDots for each skill', () => {
-    const { container } = render(<SkillCategory title="Langages" skills={mockSkills} />);
+    const { container } = render(
+      <SkillCategory title="Langages" skills={mockSkills} />,
+    );
     const dotGroups = container.querySelectorAll('[aria-hidden="true"]');
     expect(dotGroups).toHaveLength(mockSkills.length);
   });

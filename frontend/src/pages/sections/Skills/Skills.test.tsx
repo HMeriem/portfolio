@@ -14,16 +14,22 @@ describe('Skills', () => {
 
   it('renders the Languages category', () => {
     render(<Skills />);
-    expect(screen.getByRole('heading', { name: 'Langages' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Langages' }),
+    ).toBeInTheDocument();
   });
 
   it('renders the Frameworks category', () => {
     render(<Skills />);
-    expect(screen.getByRole('heading', { name: 'Frameworks' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Frameworks' }),
+    ).toBeInTheDocument();
   });
 
   it('renders the Tools category', () => {
     render(<Skills />);
-    expect(screen.getByRole('heading', { name: 'Outils & Pratiques' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Outils & Pratiques' }),
+    ).toBeInTheDocument();
   });
 });

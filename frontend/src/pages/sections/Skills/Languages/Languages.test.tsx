@@ -5,7 +5,9 @@ import { languages } from './Languages.data';
 describe('Languages', () => {
   it('renders the category title', () => {
     render(<Languages />);
-    expect(screen.getByRole('heading', { name: 'Langages' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Langages' }),
+    ).toBeInTheDocument();
   });
 
   it('renders all language entries', () => {

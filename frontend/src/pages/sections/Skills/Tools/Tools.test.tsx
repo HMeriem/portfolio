@@ -5,7 +5,9 @@ import { tools } from './Tools.data';
 describe('Tools', () => {
   it('renders the category title', () => {
     render(<Tools />);
-    expect(screen.getByRole('heading', { name: 'Outils & Pratiques' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Outils & Pratiques' }),
+    ).toBeInTheDocument();
   });
 
   it('renders all tool entries', () => {

@@ -5,7 +5,9 @@ import { frameworks } from './Frameworks.data';
 describe('Frameworks', () => {
   it('renders the category title', () => {
     render(<Frameworks />);
-    expect(screen.getByRole('heading', { name: 'Frameworks' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Frameworks' }),
+    ).toBeInTheDocument();
   });
 
   it('renders all framework entries', () => {

@@ -9,7 +9,9 @@ export default function SkillCategory({ title, skills }: SkillCategoryProps) {
       <ul className={styles.skillCategory__list}>
         {skills.map(({ name, level }) => (
           <li key={name} className={styles.skillCategory__list__item}>
-            <span className={styles.skillCategory__list__item__name}>{name}</span>
+            <span className={styles.skillCategory__list__item__name}>
+              {name}
+            </span>
             <SkillDots level={level} />
           </li>
         ))}
