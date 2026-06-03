@@ -1,0 +1,102 @@
+.identity {
+  display: flex;
+  flex-direction: column;
+}
+
+.identity__disponibility {
+  order: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--color-accent-subtle);
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-2) var(--spacing-4);
+  width: fit-content;
+  margin-bottom: var(--spacing-8);
+}
+
+.identity__disponibility::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.identity__disponibility__label {
+  font-size: var(--font-size-body);
+  color: var(--color-accent-emphasis);
+}
+
+.identity__lastname {
+  order: 2;
+  font-size: var(--font-size-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-condensed);
+}
+
+.identity__firstname {
+  order: 3;
+  font-size: var(--font-size-display);
+  font-weight: 400;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-condensed);
+  margin-bottom: var(--spacing-8);
+}
+
+.identity__infos {
+  order: 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.identity__infos__job,
+.identity__infos__location,
+.identity__infos__research {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+.identity__actions {
+  order: 5;
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
+}
+
+.identity__actions__primary {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  border: none;
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-body);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background-color var(--duration-fast);
+}
+
+.identity__actions__primary:hover {
+  background-color: var(--color-accent-emphasis);
+}
+
+.identity__actions__secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-body);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color var(--duration-fast);
+}
+
+.identity__actions__secondary:hover {
+  border-color: var(--color-text-secondary);
+}

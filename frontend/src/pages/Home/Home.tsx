@@ -1,12 +1,18 @@
 import styles from './home.module.css';
-import Profile from '../sections/Profile';
 import Header from '../sections/Header/Header';
+import Profile from '../sections/Profile/Profile';
+import ScrollHint from '@/components/ScrollHint/ScrollHint';
 
 export default function Home() {
   return (
     <div className={styles.home}>
       <Header />
-      <Profile />
+      <main className={styles.home__content}>
+        <section id="profile" className={styles.home__content__section}>
+          <Profile />
+          <ScrollHint />
+        </section>
+      </main>
     </div>
   );
 }
