@@ -25,7 +25,12 @@ describe('Presentation', () => {
 
   it('renders exactly 4 stat blocks', () => {
     render(<Presentation />);
-    const allLabels = ['Ans d\'exp.', 'Entreprises', 'Stack principale', 'MIASHS DCISS'];
+    const allLabels = [
+      "Ans d'exp.",
+      'Entreprises',
+      'Stack principale',
+      'MIASHS DCISS',
+    ];
     allLabels.forEach((label) => {
       expect(screen.getAllByText(label)).toHaveLength(1);
     });

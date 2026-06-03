@@ -83,7 +83,9 @@ describe('Home — integration', () => {
         within(skillsSection).getByRole('heading', { name: 'Frameworks' }),
       ).toBeInTheDocument();
       expect(
-        within(skillsSection).getByRole('heading', { name: 'Outils & Pratiques' }),
+        within(skillsSection).getByRole('heading', {
+          name: 'Outils & Pratiques',
+        }),
       ).toBeInTheDocument();
     });
   });

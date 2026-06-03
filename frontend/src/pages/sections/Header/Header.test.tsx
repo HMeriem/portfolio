@@ -9,7 +9,9 @@ describe('Header', () => {
 
   it('renders the skills navigation link', () => {
     render(<Header />);
-    expect(screen.getByRole('link', { name: 'Compétences' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Compétences' }),
+    ).toBeInTheDocument();
   });
 
   it('renders the career navigation link', () => {
