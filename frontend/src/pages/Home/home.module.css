@@ -12,7 +12,7 @@
 }
 
 .home__content__section {
-  height: 100%;
+  min-height: 100%;
   scroll-snap-align: start;
   display: flex;
   align-items: center;

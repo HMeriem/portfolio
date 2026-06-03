@@ -1,0 +1,43 @@
+import { render, screen } from '@testing-library/react';
+import Career from './Career';
+import { experiences } from './experiences.data';
+
+describe('Career', () => {
+  it('renders the section title', () => {
+    render(<Career />);
+    expect(screen.getByText('Parcours')).toBeInTheDocument();
+  });
+
+  it('renders the section index', () => {
+    render(<Career />);
+    expect(screen.getByText('02')).toBeInTheDocument();
+  });
+
+  it('renders all experience cards', () => {
+    render(<Career />);
+    expect(screen.getAllByRole('article')).toHaveLength(experiences.length);
+  });
+
+  it('renders each company name', () => {
+    render(<Career />);
+    experiences.forEach(({ company }) => {
+      expect(screen.getByText(company)).toBeInTheDocument();
+    });
+  });
+
+  it('renders job titles', () => {
+    render(<Career />);
+    expect(
+      screen.getByText('Lead développeuse TS / Python'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Développeuse JavaScript')).toBeInTheDocument();
+    expect(screen.getAllByText('Développeuse Full-stack')).toHaveLength(2);
+  });
+
+  it('renders each period', () => {
+    render(<Career />);
+    experiences.forEach(({ period }) => {
+      expect(screen.getByText(period)).toBeInTheDocument();
+    });
+  });
+});

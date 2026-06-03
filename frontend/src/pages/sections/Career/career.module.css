@@ -1,0 +1,28 @@
+.career {
+  width: 100%;
+  padding: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.career__experiences {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--color-border);
+}
+
+.career__experiences__card {
+  width: 50%;
+  box-sizing: border-box;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.career__experiences__card:nth-child(2n) {
+  border-right: none;
+}
+
+.career__experiences__card:nth-last-child(-n + 2) {
+  border-bottom: none;
+}

@@ -22,6 +22,7 @@
   "ignorePaths": [
     "node_modules",
     "dist",
-    "*.lock"
+    "*.lock",
+    "**/*.data.ts"
   ]
 }
