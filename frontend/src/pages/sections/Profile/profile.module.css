@@ -1,7 +1,11 @@
 .profile {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   padding: var(--spacing-12);
+}
+
+.profile__identity,
+.profile__presentation {
+  flex: 1;
 }
 
 .profile__identity {
