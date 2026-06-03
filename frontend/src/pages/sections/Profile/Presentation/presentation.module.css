@@ -13,8 +13,8 @@
 }
 
 .presentation__stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   border: 1px solid var(--color-border);
 }
 
@@ -25,8 +25,10 @@
   justify-content: center;
   gap: var(--spacing-2);
   padding: var(--spacing-6);
+  width: 50%;
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
 }
 
 .presentation__stat:nth-child(2n) {

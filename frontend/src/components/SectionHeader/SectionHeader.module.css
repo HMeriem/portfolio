@@ -1,0 +1,20 @@
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionHeader__title {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-caps);
+}
+
+.sectionHeader__counter {
+  font-size: var(--font-size-label);
+  color: var(--color-text-disabled);
+}

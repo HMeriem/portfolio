@@ -1,0 +1,17 @@
+.skillDots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.skillDots__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-muted);
+  transition: background-color var(--duration-slow);
+}
+
+.skillDots__dot[data-filled='true'] {
+  background-color: var(--color-accent);
+}

@@ -4,7 +4,9 @@ export default function Identity() {
   return (
     <div className={styles.identity}>
       <div className={styles.identity__disponibility}>
-        <p className={styles.identity__disponibility__label}>Disponible pour de nouvelles opportunités</p>
+        <p className={styles.identity__disponibility__label}>
+          Disponible pour de nouvelles opportunités
+        </p>
       </div>
       <p className={styles.identity__firstname}>Meriem</p>
       <p className={styles.identity__lastname}>Hammouya</p>
