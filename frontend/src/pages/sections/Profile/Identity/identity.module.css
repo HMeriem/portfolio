@@ -104,3 +104,10 @@
 .identity__actions__secondary:hover {
   border-color: var(--color-text-secondary);
 }
+
+@media (max-width: 768px) {
+  .identity__lastname,
+  .identity__firstname {
+    font-size: var(--font-size-title);
+  }
+}

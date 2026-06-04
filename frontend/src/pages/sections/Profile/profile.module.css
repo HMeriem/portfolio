@@ -16,3 +16,22 @@
 .profile__presentation {
   padding-left: var(--spacing-10);
 }
+
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    padding: var(--spacing-8);
+    gap: var(--spacing-8);
+  }
+
+  .profile__identity {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-8);
+  }
+
+  .profile__presentation {
+    padding-left: 0;
+  }
+}

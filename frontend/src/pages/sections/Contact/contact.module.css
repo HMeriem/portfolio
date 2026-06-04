@@ -55,3 +55,25 @@
   flex: 1;
   padding-left: var(--spacing-10);
 }
+
+@media (max-width: 768px) {
+  .contact {
+    padding: var(--spacing-8);
+  }
+
+  .contact__body {
+    flex-direction: column;
+    gap: var(--spacing-8);
+  }
+
+  .contact__body__info {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-8);
+  }
+
+  .contact__body__form {
+    padding-left: 0;
+  }
+}
