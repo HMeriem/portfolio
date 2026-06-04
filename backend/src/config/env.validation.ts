@@ -5,4 +5,6 @@ export const envValidationSchema = Joi.object({
     .valid('development', 'production', 'test')
     .default('development'),
   PORT: Joi.number().integer().min(1024).max(65535).default(4000),
+  RESEND_API_KEY: Joi.string().required(),
+  MAIL_TO: Joi.string().email().required(),
 });
