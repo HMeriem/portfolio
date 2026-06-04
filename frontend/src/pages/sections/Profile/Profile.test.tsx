@@ -15,7 +15,7 @@ describe('Profile', () => {
 
   it('renders both sections together', () => {
     render(<Profile />);
-    expect(screen.getByText('Me contacter')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Mon CV/i })).toBeInTheDocument();
     expect(screen.getByText('5+')).toBeInTheDocument();
   });
 });
