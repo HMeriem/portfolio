@@ -17,6 +17,12 @@
   transform: rotate(45deg);
 }
 
+@media (max-width: 768px) {
+  .scrollHint {
+    display: none;
+  }
+}
+
 @keyframes bounce {
   0%,
   100% {

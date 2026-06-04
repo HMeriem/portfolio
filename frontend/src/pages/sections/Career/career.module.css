@@ -26,3 +26,27 @@
 .career__experiences__card:nth-last-child(-n + 2) {
   border-bottom: none;
 }
+
+@media (max-width: 768px) {
+  .career {
+    padding: var(--spacing-8);
+  }
+
+  .career__experiences__card {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .career__experiences__card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .career__experiences__card:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .career__experiences__card:last-child {
+    border-bottom: none;
+  }
+}

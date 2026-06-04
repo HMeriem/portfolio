@@ -24,3 +24,30 @@
 .skills__categories__category + .skills__categories__category {
   padding-left: var(--spacing-10);
 }
+
+@media (max-width: 768px) {
+  .skills {
+    padding: var(--spacing-8);
+  }
+
+  .skills__categories {
+    flex-direction: column;
+  }
+
+  .skills__categories__category {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-6);
+  }
+
+  .skills__categories__category:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .skills__categories__category + .skills__categories__category {
+    padding-left: 0;
+    padding-top: var(--spacing-6);
+  }
+}
