@@ -138,6 +138,12 @@ jobs:
         working-directory: e2e
         run: npx playwright install --with-deps chromium
 
+      - name: Create .env for CI
+        run: |
+          echo "RESEND_API_KEY=ci_dummy_key" >> .env
+          echo "MAIL_TO=ci@test.com" >> .env
+          echo "PORT=4000" >> .env
+
       - name: Start stack
         run: docker compose -f docker-compose.prod.yml up -d --build
         env:
@@ -166,3 +172,5 @@ jobs:
       - name: Stop stack
         if: always()
         run: docker compose -f docker-compose.prod.yml down -v
+        env:
+          DOMAIN: localhost
