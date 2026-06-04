@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Career from './Career';
-import { experiences } from './experiences.data';
+import { careers } from './career.data';
 
 describe('Career', () => {
   it('renders the section title', () => {
@@ -15,12 +15,12 @@ describe('Career', () => {
 
   it('renders all experience cards', () => {
     render(<Career />);
-    expect(screen.getAllByRole('article')).toHaveLength(experiences.length);
+    expect(screen.getAllByRole('article')).toHaveLength(careers.length);
   });
 
   it('renders each company name', () => {
     render(<Career />);
-    experiences.forEach(({ company }) => {
+    careers.forEach(({ company }) => {
       expect(screen.getByText(company)).toBeInTheDocument();
     });
   });
@@ -36,7 +36,7 @@ describe('Career', () => {
 
   it('renders each period', () => {
     render(<Career />);
-    experiences.forEach(({ period }) => {
+    careers.forEach(({ period }) => {
       expect(screen.getByText(period)).toBeInTheDocument();
     });
   });

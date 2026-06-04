@@ -1,6 +1,6 @@
 import type { Experience } from '@/components/CareerCard/CareerCard.types';
 
-export const experiences: Experience[] = [
+export const careers: Experience[] = [
   {
     period: "2024 — aujourd'hui",
     title: 'Lead développeuse TS / Python',
