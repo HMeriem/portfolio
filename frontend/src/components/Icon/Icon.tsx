@@ -1,4 +1,5 @@
 import type { IconProps } from './Icon.types';
+import DownloadIcon from './DownloadIcon';
 import EmailIcon from './EmailIcon';
 import GithubIcon from './GithubIcon';
 import LinkedinIcon from './LinkedinIcon';
@@ -6,6 +7,8 @@ import LocationIcon from './LocationIcon';
 
 export default function Icon({ name, size }: IconProps) {
   switch (name) {
+    case 'download':
+      return <DownloadIcon size={size} />;
     case 'email':
       return <EmailIcon size={size} />;
     case 'github':

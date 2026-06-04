@@ -20,7 +20,7 @@
   width: 8px;
   height: 8px;
   border-radius: var(--radius-pill);
-  background-color: var(--color-accent);
+  background-color: var(--color-available);
   flex-shrink: 0;
 }
 
@@ -70,6 +70,9 @@
 }
 
 .identity__actions__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
   background-color: var(--color-accent);
   color: var(--color-surface);
   border: none;
@@ -77,6 +80,7 @@
   padding: var(--spacing-3) var(--spacing-6);
   font-size: var(--font-size-body);
   font-family: var(--font-body);
+  text-decoration: none;
   cursor: pointer;
   transition: background-color var(--duration-fast);
 }
