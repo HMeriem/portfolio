@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import type { ContactFormData, FormErrors, FormStatus } from './ContactForm.types';
+import type {
+  ContactFormData,
+  FormErrors,
+  FormStatus,
+} from './ContactForm.types';
 import { sendContactMessage } from '@/api/contact.api';
 import { HttpError, NetworkError } from '@/api/http';
 

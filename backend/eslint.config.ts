@@ -47,6 +47,12 @@ export default tseslint.config(
   // Config spécifique aux fichiers de test
   {
     files: ['**/*.spec.ts', 'test/**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.spec.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
