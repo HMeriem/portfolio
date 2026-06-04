@@ -57,6 +57,13 @@ export default function ContactForm() {
           Une erreur est survenue.
         </p>
       )}
+      {status === 'rate_limited' && (
+        <p
+          className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--error']}`}
+        >
+          Vous avez atteint la limite de messages par jour. Réessayez ultérieurement.
+        </p>
+      )}
     </form>
   );
 }

@@ -26,15 +26,17 @@ export function useContactForm() {
     } catch (err) {
       if (err instanceof NetworkError) {
         console.error('[contact] Network failure', err.cause);
+        setStatus('error');
       } else if (err instanceof HttpError) {
         console.error('[contact] Server error', {
           status: err.status,
           body: err.responseBody,
         });
+        setStatus(err.status === 429 ? 'rate_limited' : 'error');
       } else {
         console.error('[contact] Unexpected error', err);
+        setStatus('error');
       }
-      setStatus('error');
     }
   }
 

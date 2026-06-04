@@ -4,4 +4,4 @@ export interface ContactFormData {
   message: string;
 }
 
-export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+export type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
