@@ -1,11 +1,25 @@
 services:
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - DOMAIN=${DOMAIN}
+    depends_on:
+      - frontend
+    restart: unless-stopped
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
       target: prod
-    ports:
-      - "3000:80"
     depends_on:
       backend:
         condition: service_healthy
@@ -29,3 +43,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 20s
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 
 interface HealthResponse {
   status: string;
@@ -6,6 +7,7 @@ interface HealthResponse {
   uptime: number;
 }
 
+@SkipThrottle()
 @Controller('health')
 export class HealthController {
   @Get()

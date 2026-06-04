@@ -16,6 +16,9 @@
   /* ── Border ── */
   --color-border: #e5e2db;
 
+  /* ── Status ── */
+  --color-available: #22c55e;
+
   /* ── Accent (brand color) ── */
   --color-accent: #d4537e;
   --color-accent-subtle: #fbeaf0; /* background for accent elements */

@@ -1,4 +1,5 @@
 import styles from './identity.module.css';
+import Icon from '@/components/Icon/Icon';
 
 export default function Identity() {
   return (
@@ -12,16 +13,20 @@ export default function Identity() {
       <p className={styles.identity__lastname}>Hammouya</p>
       <div className={styles.identity__infos}>
         <p className={styles.identity__infos__job}>Développeuse Full Stack</p>
-        <p className={styles.identity__infos__location}>Marseille, France</p>
-        <p className={styles.identity__infos__research}>CDI, CDD, Freelance</p>
+        <p className={styles.identity__infos__location}>Marseille | France</p>
+        <p className={styles.identity__infos__research}>
+          CDI | CDD | Freelance
+        </p>
       </div>
       <div className={styles.identity__actions}>
-        <button className={styles.identity__actions__primary}>
-          Me contacter
-        </button>
-        <button className={styles.identity__actions__secondary}>
-          Voir les projets
-        </button>
+        <a
+          className={styles.identity__actions__primary}
+          href="/cv-meriem-hammouya.pdf"
+          download="CV Meriem Hammouya.pdf"
+        >
+          <Icon name="download" size={14} />
+          Mon CV
+        </a>
       </div>
     </div>
   );

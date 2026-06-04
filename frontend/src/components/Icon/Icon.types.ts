@@ -1,4 +1,9 @@
-export type IconName = 'email' | 'github' | 'linkedin' | 'location';
+export type IconName =
+  | 'email'
+  | 'github'
+  | 'linkedin'
+  | 'location'
+  | 'download';
 
 export interface IconProps {
   name: IconName;

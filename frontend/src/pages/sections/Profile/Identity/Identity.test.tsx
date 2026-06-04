@@ -21,16 +21,13 @@ describe('Identity', () => {
 
   it('renders the location', () => {
     render(<Identity />);
-    expect(screen.getByText('Marseille, France')).toBeInTheDocument();
+    expect(screen.getByText('Marseille | France')).toBeInTheDocument();
   });
 
-  it('renders the contact button', () => {
+  it('renders the CV download link', () => {
     render(<Identity />);
-    expect(screen.getByText('Me contacter')).toBeInTheDocument();
-  });
-
-  it('renders the projects button', () => {
-    render(<Identity />);
-    expect(screen.getByText('Voir les projets')).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /Mon CV/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('download');
   });
 });

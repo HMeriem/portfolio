@@ -3,6 +3,11 @@ import { test, expect } from '@playwright/test';
 test.describe('Contact form', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
+    // Disable CSS transitions to prevent Firefox from treating transitioning
+    // inputs as non-interactable (opacity transition on disabled/enabled state)
+    await page.addStyleTag({
+      content: '*, *::before, *::after { transition: none !important; animation: none !important; }',
+    });
     await page.getByPlaceholder('Nom').scrollIntoViewIfNeeded();
   });
 

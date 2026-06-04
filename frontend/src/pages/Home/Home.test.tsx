@@ -85,10 +85,11 @@ describe('Home — integration', () => {
       expect(within(profileSection).getByText('Hammouya')).toBeInTheDocument();
     });
 
-    it('displays the CTA buttons', () => {
+    it('displays the CV download link', () => {
       render(<Home />);
-      expect(screen.getByText('Me contacter')).toBeInTheDocument();
-      expect(screen.getByText('Voir les projets')).toBeInTheDocument();
+      const link = screen.getByRole('link', { name: /Mon CV/i });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('download');
     });
   });
 

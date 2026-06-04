@@ -5,18 +5,17 @@ test.describe('Homepage', () => {
     await page.goto('/')
   })
 
-  test('affiche le titre principal', async ({ page }) => {
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  test('affiche le nom de famille', async ({ page }) => {
+    await expect(page.getByText('Hammouya', { exact: true })).toBeVisible()
   })
 
-  test('affiche le statut de connexion API', async ({ page }) => {
-    const status = page.getByText(/API connectée|API inaccessible|Connexion/)
-    await expect(status).toBeVisible({ timeout: 5000 })
+  test('affiche le titre de poste', async ({ page }) => {
+    await expect(page.getByText('Développeuse Full Stack')).toBeVisible()
   })
 
-  test('le bouton principal est cliquable', async ({ page }) => {
-    const button = page.getByRole('button', { name: 'Commencer' })
-    await expect(button).toBeVisible()
-    await expect(button).toBeEnabled()
+  test('le lien Mon CV est présent et téléchargeable', async ({ page }) => {
+    const link = page.getByRole('link', { name: /Mon CV/i })
+    await expect(link).toBeVisible()
+    await expect(link).toHaveAttribute('download')
   })
 })
