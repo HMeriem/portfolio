@@ -61,7 +61,8 @@ export default function ContactForm() {
         <p
           className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--error']}`}
         >
-          Vous avez atteint la limite de messages par jour. Réessayez ultérieurement.
+          Vous avez atteint la limite de messages par jour. Réessayez
+          ultérieurement.
         </p>
       )}
     </form>
