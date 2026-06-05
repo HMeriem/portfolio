@@ -16,7 +16,9 @@ function validate(data: ContactFormData): FormErrors {
   }
   if (!data.email.trim()) {
     errors.email = 'Veuillez indiquer votre adresse email.';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  } else if (
+    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email)
+  ) {
     errors.email = 'Adresse email invalide.';
   }
   if (!data.message.trim()) {

@@ -28,7 +28,7 @@ export class ContactController {
       throw new BadRequestException('name, email and message are required');
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       throw new BadRequestException('Invalid email address');
     }
 
