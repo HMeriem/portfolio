@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { Resend } from 'resend';
 import type { ContactDto } from './contact.dto';
+import { buildContactEmail } from './contact.template';
 
 @Controller('contact')
 export class ContactController {
@@ -39,7 +40,9 @@ export class ContactController {
     const { error } = await this.resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>',
       to: mailTo,
+      replyTo: email,
       subject: `[Portfolio] Message de ${name}`,
+      html: buildContactEmail(name, email, message),
       text: `De : ${name} <${email}>\n\n${message}`,
     });
 
