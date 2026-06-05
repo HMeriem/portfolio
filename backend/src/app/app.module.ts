@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerStorageRedisService } from 'nestjs-throttler-storage-redis';
 import { envValidationSchema } from '../config/env.validation';
 import { HealthModule } from '../health/health.module';
 import { ContactModule } from '../contact/contact.module';
@@ -15,7 +16,14 @@ import { ContactModule } from '../contact/contact.module';
         abortEarly: false,
       },
     }),
-    ThrottlerModule.forRoot([{ ttl: 86_400_000, limit: 3 }]),
+    ThrottlerModule.forRootAsync({
+      useFactory: () => ({
+        throttlers: [{ ttl: 86_400_000, limit: 3 }],
+        ...(process.env.REDIS_URL && {
+          storage: new ThrottlerStorageRedisService(process.env.REDIS_URL),
+        }),
+      }),
+    }),
     HealthModule,
     ContactModule,
   ],
