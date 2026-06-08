@@ -2,14 +2,13 @@ import {
   Controller,
   Post,
   Body,
-  BadRequestException,
   InternalServerErrorException,
   HttpCode,
   HttpStatus,
   Logger,
 } from '@nestjs/common';
 import { Resend } from 'resend';
-import type { ContactDto } from './contact.dto';
+import { ContactDto } from './contact.dto';
 import { buildContactEmail } from './contact.template';
 
 @Controller('contact')
@@ -23,14 +22,6 @@ export class ContactController {
     const name = body.name.trim();
     const email = body.email.trim();
     const message = body.message.trim();
-
-    if (!name || !email || !message) {
-      throw new BadRequestException('name, email and message are required');
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      throw new BadRequestException('Invalid email address');
-    }
 
     const mailTo = process.env.MAIL_TO;
     if (!mailTo) {
