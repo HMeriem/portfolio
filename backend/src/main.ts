@@ -11,9 +11,9 @@ async function bootstrap() {
   app.use(helmet());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.setGlobalPrefix('api');
-  app.enableCors({
-    origin: '*',
-  });
+  const allowedOrigin =
+    process.env.NODE_ENV === 'production' ? 'https://hammouyameriem.dev' : '*';
+  app.enableCors({ origin: allowedOrigin });
 
   const port = Number(process.env.PORT) || 4000;
   await app.listen(port);
