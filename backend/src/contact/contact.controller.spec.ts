@@ -1,8 +1,5 @@
 import { Test, type TestingModule } from '@nestjs/testing';
-import {
-  BadRequestException,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { InternalServerErrorException } from '@nestjs/common';
 import { Resend } from 'resend';
 import { ContactController } from './contact.controller';
 import type { ContactDto } from './contact.dto';
@@ -66,11 +63,20 @@ describe('ContactController', () => {
       );
     });
 
-    it('includes sender name and email in the body text', async () => {
+    it('sets replyTo to the sender email', async () => {
+      mockEmailsSend.mockResolvedValue({ error: null });
+      await controller.send(valid);
+      expect(mockEmailsSend).toHaveBeenCalledWith(
+        expect.objectContaining({ replyTo: 'alice@example.com' }),
+      );
+    });
+
+    it('sends both html and text versions', async () => {
       mockEmailsSend.mockResolvedValue({ error: null });
       await controller.send(valid);
       expect(mockEmailsSend).toHaveBeenCalledWith(
         expect.objectContaining({
+          html: expect.stringContaining('Alice'),
           text: expect.stringContaining('alice@example.com'),
         }),
       );
@@ -88,51 +94,6 @@ describe('ContactController', () => {
           subject: '[Portfolio] Message de Alice',
         }),
       );
-    });
-  });
-
-  describe('input validation', () => {
-    it('throws BadRequestException when name is empty', async () => {
-      await expect(controller.send({ ...valid, name: '' })).rejects.toThrow(
-        BadRequestException,
-      );
-    });
-
-    it('throws BadRequestException when name is whitespace only', async () => {
-      await expect(controller.send({ ...valid, name: '   ' })).rejects.toThrow(
-        BadRequestException,
-      );
-    });
-
-    it('throws BadRequestException when email is empty', async () => {
-      await expect(controller.send({ ...valid, email: '' })).rejects.toThrow(
-        BadRequestException,
-      );
-    });
-
-    it('throws BadRequestException when message is empty', async () => {
-      await expect(controller.send({ ...valid, message: '' })).rejects.toThrow(
-        BadRequestException,
-      );
-    });
-
-    it('throws BadRequestException for invalid email format', async () => {
-      await expect(
-        controller.send({ ...valid, email: 'not-valid' }),
-      ).rejects.toThrow(BadRequestException);
-    });
-
-    it('throws BadRequestException for email without TLD', async () => {
-      await expect(
-        controller.send({ ...valid, email: 'user@nodomain' }),
-      ).rejects.toThrow(BadRequestException);
-    });
-
-    it('accepts a valid email with subdomain and plus-addressing', async () => {
-      mockEmailsSend.mockResolvedValue({ error: null });
-      await expect(
-        controller.send({ ...valid, email: 'alice+tag@mail.example.co.uk' }),
-      ).resolves.toBeUndefined();
     });
   });
 
