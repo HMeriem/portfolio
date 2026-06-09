@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
+import { act } from '@testing-library/react';
+import { renderHookWithProviders } from '@/test-utils';
 import { useContactForm } from './useContactForm';
 import { sendContactMessage } from '@/api/contact.api';
 import { HttpError, NetworkError } from '@/api/http';
@@ -16,7 +17,7 @@ describe('useContactForm', () => {
   });
 
   it('initialises with empty form, no errors, and idle status', () => {
-    const { result } = renderHook(() => useContactForm());
+    const { result } = renderHookWithProviders(() => useContactForm());
     expect(result.current.form).toEqual({ name: '', email: '', message: '' });
     expect(result.current.errors).toEqual({});
     expect(result.current.status).toBe('idle');
@@ -25,7 +26,7 @@ describe('useContactForm', () => {
 
   describe('handleChange', () => {
     it('updates the corresponding field value', () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       act(() => {
         result.current.handleChange(change('name', 'Alice'));
       });
@@ -33,7 +34,7 @@ describe('useContactForm', () => {
     });
 
     it('clears the error for the changed field', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -45,7 +46,7 @@ describe('useContactForm', () => {
     });
 
     it('does not clear errors for other fields', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -59,7 +60,7 @@ describe('useContactForm', () => {
 
   describe('validation', () => {
     it('sets name error when name is empty', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -67,7 +68,7 @@ describe('useContactForm', () => {
     });
 
     it('sets name error when name is whitespace only', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       act(() => {
         result.current.handleChange(change('name', '   '));
       });
@@ -78,7 +79,7 @@ describe('useContactForm', () => {
     });
 
     it('sets email error when email is empty', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -88,7 +89,7 @@ describe('useContactForm', () => {
     });
 
     it('sets email error when email format is invalid', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       act(() => {
         result.current.handleChange(change('name', 'Alice'));
         result.current.handleChange(change('email', 'not-an-email'));
@@ -101,7 +102,7 @@ describe('useContactForm', () => {
     });
 
     it('sets message error when message is empty', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -111,7 +112,7 @@ describe('useContactForm', () => {
     });
 
     it('does not call sendContactMessage when validation fails', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -119,7 +120,7 @@ describe('useContactForm', () => {
     });
 
     it('keeps status idle when validation fails', async () => {
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       await act(async () => {
         await result.current.handleSubmit(submit);
       });
@@ -138,7 +139,7 @@ describe('useContactForm', () => {
 
     it('calls sendContactMessage with the form data', async () => {
       vi.mocked(sendContactMessage).mockResolvedValue(undefined);
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -152,7 +153,7 @@ describe('useContactForm', () => {
 
     it('sets status to success after a successful send', async () => {
       vi.mocked(sendContactMessage).mockResolvedValue(undefined);
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -162,7 +163,7 @@ describe('useContactForm', () => {
 
     it('resets the form to empty after success', async () => {
       vi.mocked(sendContactMessage).mockResolvedValue(undefined);
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -174,7 +175,7 @@ describe('useContactForm', () => {
       vi.mocked(sendContactMessage).mockRejectedValue(
         new NetworkError(new Error('fail')),
       );
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -186,7 +187,7 @@ describe('useContactForm', () => {
       vi.mocked(sendContactMessage).mockRejectedValue(
         new HttpError(429, 'Too Many Requests', ''),
       );
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -198,7 +199,7 @@ describe('useContactForm', () => {
       vi.mocked(sendContactMessage).mockRejectedValue(
         new HttpError(500, 'Internal Server Error', ''),
       );
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);
@@ -208,7 +209,7 @@ describe('useContactForm', () => {
 
     it('sets status to error on unexpected error', async () => {
       vi.mocked(sendContactMessage).mockRejectedValue(new Error('unexpected'));
-      const { result } = renderHook(() => useContactForm());
+      const { result } = renderHookWithProviders(() => useContactForm());
       fillValid(result);
       await act(async () => {
         await result.current.handleSubmit(submit);

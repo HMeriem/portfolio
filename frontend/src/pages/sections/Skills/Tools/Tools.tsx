@@ -1,6 +1,9 @@
 import { tools } from './Tools.data';
 import SkillCategory from '../SkillCategory/SkillCategory';
+import { useTranslation } from '@/components/Langages/useTranslation';
 
 export default function Tools() {
-  return <SkillCategory title="Outils & Pratiques" skills={tools} />;
+  const translation = useTranslation();
+
+  return <SkillCategory title={translation.skills.tools} skills={tools} />;
 }

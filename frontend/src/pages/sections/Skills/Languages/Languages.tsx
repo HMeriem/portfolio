@@ -1,6 +1,11 @@
 import { languages } from './Languages.data';
 import SkillCategory from '../SkillCategory/SkillCategory';
+import { useTranslation } from '@/components/Langages/useTranslation';
 
 export default function Languages() {
-  return <SkillCategory title="Langages" skills={languages} />;
+  const translation = useTranslation();
+
+  return (
+    <SkillCategory title={translation.skills.languages} skills={languages} />
+  );
 }

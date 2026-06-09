@@ -1,6 +1,11 @@
 import { frameworks } from './Frameworks.data';
 import SkillCategory from '../SkillCategory/SkillCategory';
+import { useTranslation } from '@/components/Langages/useTranslation';
 
 export default function Frameworks() {
-  return <SkillCategory title="Frameworks" skills={frameworks} />;
+  const translation = useTranslation();
+
+  return (
+    <SkillCategory title={translation.skills.frameworks} skills={frameworks} />
+  );
 }

@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '@/test-utils';
 import Presentation from './Presentation';
 
 describe('Presentation', () => {
   it('renders the bio text', () => {
-    render(<Presentation />);
+    renderWithProviders(<Presentation />);
     expect(screen.getByText(/passionnée/)).toBeInTheDocument();
   });
 
   it('renders all stat values', () => {
-    render(<Presentation />);
+    renderWithProviders(<Presentation />);
     expect(screen.getByText('5+')).toBeInTheDocument();
     expect(screen.getByText('4')).toBeInTheDocument();
     expect(screen.getByText('TS')).toBeInTheDocument();
@@ -16,7 +17,7 @@ describe('Presentation', () => {
   });
 
   it('renders all stat labels', () => {
-    render(<Presentation />);
+    renderWithProviders(<Presentation />);
     expect(screen.getByText("Ans d'exp.")).toBeInTheDocument();
     expect(screen.getByText('Entreprises')).toBeInTheDocument();
     expect(screen.getByText('Stack principale')).toBeInTheDocument();
@@ -24,7 +25,7 @@ describe('Presentation', () => {
   });
 
   it('renders exactly 4 stat blocks', () => {
-    render(<Presentation />);
+    renderWithProviders(<Presentation />);
     const allLabels = [
       "Ans d'exp.",
       'Entreprises',
