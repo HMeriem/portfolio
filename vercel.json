@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build --prefix frontend",
+  "buildCommand": "npm --prefix frontend run build",
   "outputDirectory": "frontend/dist",
-  "installCommand": "npm ci --prefix frontend",
+  "installCommand": "npm --prefix frontend ci",
   "framework": "vite",
   "rewrites": [
     {
