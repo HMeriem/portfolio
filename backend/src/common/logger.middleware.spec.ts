@@ -24,7 +24,9 @@ describe('LoggerMiddleware', () => {
       on: jest.fn((event: string, cb: () => void) => {
         if (event === 'finish') finishCallback = cb;
       }),
-      trigger: () => finishCallback(),
+      trigger: () => {
+        finishCallback();
+      },
     };
     return res as unknown as Response & { trigger: () => void };
   }

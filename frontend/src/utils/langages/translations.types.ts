@@ -34,7 +34,7 @@ export interface Translations {
   };
   presentation: {
     bio: string;
-    stats: ReadonlyArray<{ value: string; label: string }>;
+    stats: readonly { value: string; label: string }[];
   };
   skills: {
     sectionTitle: string;
