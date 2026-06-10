@@ -3,7 +3,8 @@ export type IconName =
   | 'github'
   | 'linkedin'
   | 'location'
-  | 'download';
+  | 'download'
+  | 'globe';
 
 export interface IconProps {
   name: IconName;

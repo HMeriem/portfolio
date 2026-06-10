@@ -1,14 +1,9 @@
-export interface DescriptionItem {
-  text: string;
-  subItems?: string[];
-}
+import type {
+  DescriptionItem,
+  Experience,
+} from '@/utils/langages/translations.types';
 
-export interface Experience {
-  period: string;
-  title: string;
-  company: string;
-  description: DescriptionItem[];
-}
+export type { DescriptionItem, Experience };
 
 export interface CareerCardProps {
   experience: Experience;

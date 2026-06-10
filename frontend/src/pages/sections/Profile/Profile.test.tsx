@@ -1,20 +1,21 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '@/test-utils';
 import Profile from './Profile';
 
 describe('Profile', () => {
   it('renders the Identity section', () => {
-    render(<Profile />);
+    renderWithProviders(<Profile />);
     expect(screen.getByText('Meriem')).toBeInTheDocument();
     expect(screen.getByText('Hammouya')).toBeInTheDocument();
   });
 
   it('renders the Presentation section', () => {
-    render(<Profile />);
+    renderWithProviders(<Profile />);
     expect(screen.getByText(/passionnée/)).toBeInTheDocument();
   });
 
   it('renders both sections together', () => {
-    render(<Profile />);
+    renderWithProviders(<Profile />);
     expect(screen.getByRole('link', { name: /Mon CV/i })).toBeInTheDocument();
     expect(screen.getByText('5+')).toBeInTheDocument();
   });

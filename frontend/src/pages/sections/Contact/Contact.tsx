@@ -3,21 +3,26 @@ import SectionHeader from '@/components/SectionHeader/SectionHeader';
 import Icon from '@/components/Icon/Icon';
 import ContactForm from './ContactForm/ContactForm';
 import { contactLinks } from './contact.data';
+import { useTranslation } from '@/components/Langages/useTranslation';
 
 export default function Contact() {
+  const translation = useTranslation();
+
   return (
     <div className={styles.contact}>
-      <SectionHeader title="Contact" index="04" />
+      <SectionHeader title={translation.contact.sectionTitle} index="04" />
       <div className={styles.contact__body}>
         <div className={styles.contact__body__info}>
-          <span className={styles.contact__body__info__title}>Parlons-en.</span>
+          <span className={styles.contact__body__info__title}>
+            {translation.contact.tagline}
+          </span>
           <div className={styles.contact__body__info__links}>
-            {contactLinks.map(({ id, ariaLabel, href }) =>
+            {contactLinks.map(({ id, href }) =>
               href ? (
                 <a
                   key={id}
                   href={href}
-                  aria-label={ariaLabel}
+                  aria-label={translation.contact.links[id]}
                   className={styles.contact__body__info__links__link}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={
@@ -29,7 +34,7 @@ export default function Contact() {
               ) : (
                 <span
                   key={id}
-                  title={ariaLabel}
+                  title={translation.contact.links[id]}
                   className={styles.contact__body__info__links__link}
                 >
                   <Icon name={id} />

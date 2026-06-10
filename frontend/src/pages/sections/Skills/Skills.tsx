@@ -3,11 +3,14 @@ import SectionHeader from '@/components/SectionHeader/SectionHeader';
 import Languages from './Languages/Languages';
 import Frameworks from './Framework/Frameworks';
 import Tools from './Tools/Tools';
+import { useTranslation } from '@/components/Langages/useTranslation';
 
 export default function Skills() {
+  const translation = useTranslation();
+
   return (
     <div className={styles.skills}>
-      <SectionHeader title="Compétences" index="01" />
+      <SectionHeader title={translation.skills.sectionTitle} index="01" />
       <div className={styles.skills__categories}>
         <div className={styles.skills__categories__category}>
           <Languages />

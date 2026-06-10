@@ -1,32 +1,35 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '@/test-utils';
 import Career from './Career';
-import { careers } from './career.data';
+import { fr } from '@/utils/langages/fr';
+
+const { entries } = fr.career;
 
 describe('Career', () => {
   it('renders the section title', () => {
-    render(<Career />);
+    renderWithProviders(<Career />);
     expect(screen.getByText('Parcours')).toBeInTheDocument();
   });
 
   it('renders the section index', () => {
-    render(<Career />);
+    renderWithProviders(<Career />);
     expect(screen.getByText('02')).toBeInTheDocument();
   });
 
   it('renders all experience cards', () => {
-    render(<Career />);
-    expect(screen.getAllByRole('article')).toHaveLength(careers.length);
+    renderWithProviders(<Career />);
+    expect(screen.getAllByRole('article')).toHaveLength(entries.length);
   });
 
   it('renders each company name', () => {
-    render(<Career />);
-    careers.forEach(({ company }) => {
+    renderWithProviders(<Career />);
+    entries.forEach(({ company }) => {
       expect(screen.getByText(company)).toBeInTheDocument();
     });
   });
 
   it('renders job titles', () => {
-    render(<Career />);
+    renderWithProviders(<Career />);
     expect(
       screen.getByText('Lead développeuse TS / Python'),
     ).toBeInTheDocument();
@@ -35,8 +38,8 @@ describe('Career', () => {
   });
 
   it('renders each period', () => {
-    render(<Career />);
-    careers.forEach(({ period }) => {
+    renderWithProviders(<Career />);
+    entries.forEach(({ period }) => {
       expect(screen.getByText(period)).toBeInTheDocument();
     });
   });

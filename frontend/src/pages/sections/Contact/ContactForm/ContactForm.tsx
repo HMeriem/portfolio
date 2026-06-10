@@ -2,7 +2,7 @@ import styles from './ContactForm.module.css';
 import { useContactForm } from './useContactForm';
 
 export default function ContactForm() {
-  const { form, errors, status, isLoading, handleChange, handleSubmit } =
+  const { form, errors, status, isLoading, handleChange, handleSubmit, text } =
     useContactForm();
 
   const fieldClass = (hasError: boolean) =>
@@ -17,7 +17,7 @@ export default function ContactForm() {
           className={fieldClass(!!errors.name)}
           type="text"
           name="name"
-          placeholder="Nom"
+          placeholder={text.namePlaceholder}
           value={form.name}
           onChange={handleChange}
           aria-invalid={!!errors.name}
@@ -32,7 +32,7 @@ export default function ContactForm() {
           className={fieldClass(!!errors.email)}
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={text.emailPlaceholder}
           value={form.email}
           onChange={handleChange}
           aria-invalid={!!errors.email}
@@ -46,7 +46,7 @@ export default function ContactForm() {
         <textarea
           className={`${fieldClass(!!errors.message)} ${styles['contactForm__field--textarea']}`}
           name="message"
-          placeholder="Message..."
+          placeholder={text.messagePlaceholder}
           value={form.message}
           onChange={handleChange}
           aria-invalid={!!errors.message}
@@ -61,35 +61,34 @@ export default function ContactForm() {
         type="submit"
         disabled={isLoading}
       >
-        {isLoading ? 'Envoi...' : 'Envoyer →'}
+        {isLoading ? text.submitLoading : text.submitIdle}
       </button>
       {status === 'success' && (
         <p
           className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--success']}`}
         >
-          Message envoyé avec succès.
+          {text.success}
         </p>
       )}
       {status === 'error' && (
         <p
           className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--error']}`}
         >
-          Une erreur est survenue côté serveur. Réessayez plus tard.
+          {text.errorServer}
         </p>
       )}
       {status === 'network_error' && (
         <p
           className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--error']}`}
         >
-          Impossible de joindre le serveur. Vérifiez votre connexion internet.
+          {text.errorNetwork}
         </p>
       )}
       {status === 'rate_limited' && (
         <p
           className={`${styles.contactForm__feedback} ${styles['contactForm__feedback--error']}`}
         >
-          Vous avez atteint la limite de messages par jour. Réessayez
-          ultérieurement.
+          {text.errorRateLimit}
         </p>
       )}
     </form>
